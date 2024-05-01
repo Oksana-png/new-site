@@ -1,0 +1,105 @@
+.about {
+  @include tablet768 {
+    margin-bottom: 280px;
+  }
+  &-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 30px 60px 67px 30px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 16px;
+    @include laptop {
+      padding: 30px 40px 80px 40px;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @include tablet768 {
+      padding: 10px 10px 46px 10px;
+      gap: 20px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      right: 50%;
+      bottom: -107px;
+      transform: translateX(50%);
+      width: 300px;
+      height: 300px;
+      z-index: -1;
+      background-image: $c-grad;
+      filter: blur(140px);
+
+      @include desktop {
+        filter: blur(90px);
+      }
+
+      @include tablet768 {
+        width: 200px;
+        height: 200px;
+        filter: blur(50px);
+        bottom: -160px;
+      }
+    }
+  }
+
+  & .decor-title {
+    margin-bottom: 30px;
+    margin-left: 0;
+  }
+
+  &__image {
+    @include laptop {
+      max-width: 513px;
+      margin: 0 auto;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      color: $c-gray-txt;
+      margin-bottom: 14px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    bottom: -60px;
+    right: 50%;
+    transform: translate(50%);
+    width: 654px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    @include tablet768 {
+      bottom: 28px;
+      transform: translate(50%, 100%);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      min-width: 250px;
+      max-width: 90%;
+    }
+    li {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, .8);
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      fill: url(#gradient);
+
+      box-shadow: 0 -2px 20px rgba(78, 84, 14, 15%);
+    }
+  }
+}

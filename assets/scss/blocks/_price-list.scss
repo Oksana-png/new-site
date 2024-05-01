@@ -1,0 +1,220 @@
+.price {
+  position: relative;
+  &-list {
+    &__header {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+      @include laptop {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      @include tablet768 {
+        margin-bottom: 30px;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        width: auto;
+        justify-content: flex-start;
+      }
+
+      & button {
+        padding: 12px 24px;
+        border-top-right-radius: 8px;
+        @include laptop {
+          flex-basis: 40%;
+        }
+        @include tablet768 {
+          flex-shrink: 0;
+          flex-basis: auto;
+        }
+        &:hover {
+          color: $c-white;
+          background-color: $c-main;
+        }
+        &.active {
+          color: $c-white;
+          background-color: $c-main;
+        }
+      }
+    }
+
+
+    &__body {
+      // min-height: 300px;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        right: -150px;
+        transform: translateX(53%);
+        z-index: -1;
+        top: 113px;
+        width: 300px;
+        height: 300px;
+        background-image: $c-grad;
+        filter: blur(140px);
+        @include desktop {
+          top: 0px;
+          filter: blur(90px);
+        }
+        @include tablet768 {
+          width: 100px;
+          height: 100px;
+          filter: blur(50px);
+          bottom: 100px;
+          top: auto;
+          right: 50%;
+          transform: translateX(123%);
+        }
+      }
+    }
+
+    &__item {
+      display: grid;
+      overflow: hidden;
+      opacity: 0;
+      max-height: 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      
+      @include laptop {
+        gap: 30px;
+      }
+      @include tablet768 {
+        grid-template-columns: 1fr;
+      }
+      &.active {
+        transition: max-height 2s cubic-bezier(.73, .69, 0, .85),opacity 1s ease-in-out;
+        position: static;
+        opacity: 1;
+        max-height: 1500px;
+      }
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 900px;
+    width: 800px;
+    top: -328px;
+    left: 0;
+    z-index: -1;
+    background-image: url(../img/decore/krug.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    @include laptop {
+      height: 424px;
+      width: 254px;
+      background-size: contain;
+      background-position: bottom;
+    }
+    @include tablet768 {
+      display: none;
+    }
+  }
+}
+
+
+.tabs-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: center;
+  &__header {
+    padding: 20px 40px;
+    background-image: $c-grad;
+    border-radius: 16px;
+    font-weight: bold;
+    @include laptop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 84px;
+    }
+    @include tablet768 {
+      padding: 20px;
+      height: auto;
+    }
+  }
+  &__order {
+    grid-column: -1/-2;
+    grid-row: 1/2;
+    @include tablet768 {
+      grid-column: 1/-1;
+      grid-row: 4/5;
+    }
+
+    & .content > div {
+      text-align: center;
+      margin-bottom: 20px;
+      & div {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      & h4 {
+        font-size: 36px;
+        @include tablet768 {
+          font-size: 24px;
+        }
+        & strong {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  &__body {
+    & p {
+      color: $c-gray-txt;
+    }
+  }
+  &__content {
+    padding: 20px 40px 32px 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    @include tablet768 {
+      padding: 20px 25px;
+    }
+    & table {
+      width: 100%;
+    }
+    & thead {
+      margin-bottom: 8px;
+      & th {
+        color: $c-gray-txt;
+        font-weight: normal;
+        text-align: left;
+      }
+    }
+
+    & tbody {
+      & tr {
+        & td:first-child {
+          width: 80%;
+        }
+        & >td {
+          border-bottom: 1px solid rgba(225, 229, 227, 1);
+        }
+        &:last-child {
+          &>td {
+            border-bottom: none;
+          }
+        }
+      }
+      & td {
+        padding: 8px 0;
+        &:last-child {
+          & span {
+            color: $c-gray-txt;
+          }
+        }
+      }
+    }
+  }
+}

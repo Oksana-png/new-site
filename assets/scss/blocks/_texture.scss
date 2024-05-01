@@ -1,0 +1,201 @@
+.texture {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 100px;
+    height: 900px;
+    width: 740px;
+    background-image: url('../img/decore/facture-krug.png');
+    background-repeat: no-repeat;
+    @include media(1800px) {
+      left: -140px;
+    }
+    @include media(1500px) {
+      left: -280px;
+    }
+    @include laptop {
+      width: 737px;
+      height: 657px;
+      background-size: contain;
+      left: -300px;
+    }
+    @include tablet768 {
+      display: none;
+    }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    left: -50px;
+    z-index: -1;
+    bottom: -73px;
+    width: 300px;
+    height: 300px;
+    background-image: $c-grad;
+    filter: blur(100px);
+    @include desktop {
+      bottom: 116px;
+    }
+    @include tablet768 {
+      display: none;
+    }
+  }
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    @include desktop {
+      grid-template-columns: 226px 1fr;
+      gap: 30px;
+    }
+    @include tablet768 {
+      max-width: 290px;
+      margin: 0 auto;
+      grid-template-columns: 1fr;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 40px;
+    @include desktop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include tablet768 {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__item {
+    &-image {
+      position: relative;
+      height: 222px;
+      padding: 12px 13px 10px 13px;
+      cursor: pointer;
+  
+      @include laptop {
+        height: 174px;
+        padding: 5px 9px 12px 13px;
+      }
+      @include tablet768 {
+        height: 190px;
+        padding: 5px 11px 14px 18px;
+      }
+  
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 232px;
+        height: 200px;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+        transition: background-color .3s ease-out, background-image .3s ease-out;
+        clip-path: url(#figureClip);
+  
+        @include laptop {
+          width: 198px;
+          height: 163.7px;
+          clip-path: url(#factureTablet);
+        }
+  
+        @include tablet768 {
+          width: 260px;
+          height: 181px;
+          clip-path: url(#facturePhone);
+        }
+      }
+  
+      &:hover {
+        & img {
+          position: relative;
+        }
+  
+        &::before {
+          background-color: rgba(15, 26, 19, 0.6);
+          background-image: url("../img/svg/zoom-in.png");
+          background-size: 24px 24px;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+  
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -1px;
+        bottom: -2px;
+        left: 0;
+        background-image: url("../img/decore/works-border-large.png");
+  
+        @include laptop {
+          background-image: url("../img/decore/facture-border-tablet.png");
+        }
+  
+        @include tablet768 {
+          background-image: url("../img/decore/facture-border-phone.png");
+        }
+      }
+  
+      & img {
+        height: 200px;
+        width: 232px;
+        margin: 0 auto;
+        display: block;
+        clip-path: url(#figureClip);
+  
+        @include laptop {
+          height: 156px;
+          width: 199px;
+          clip-path: url(#factureTablet);
+        }
+  
+        @include tablet768 {
+          width: 290px;
+          height: 222px;
+          clip-path: url(#facturePhone);
+        }
+      }
+    }
+    &-title {
+      position: relative;
+      width: fit-content;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 15.9px;
+      font-weight: 400;
+      margin-left: auto;
+      margin-top: -30px;
+      z-index: 1;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(5px);
+        box-shadow: 1px 1px #fff;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 60%);
+      }
+    }
+  }
+
+  & .decor-title {
+    margin-left: 0;
+    margin-bottom: 0;
+    @include tablet768 {
+      margin: 0 auto;
+      margin-bottom: 40px;
+    }
+  }
+}

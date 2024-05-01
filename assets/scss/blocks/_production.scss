@@ -1,0 +1,134 @@
+.production {
+  margin-top: 160px;
+  @include tablet768 {
+    margin-top: 80px;
+  }
+  &-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 332px;
+    gap: 40px;
+    @include desktop {
+      gap: 30px;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    @include tablet768 {
+      gap: 15px;
+    }
+  }
+  &-swiper {
+    width: 565px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: grab;
+    @include desktop {
+      width: 100%;
+      height: 350px;
+    }
+    @include tablet768 {
+      height: 300px;
+    }
+    @include small {
+      height: 200px;
+      height: 200px;
+    }
+
+    & picture, img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  & .swiper-navigation {
+    margin-top: -20px;
+    @include desktop {
+      margin-top: -10px;
+    }
+    @include tablet768 {
+      margin-top: 0;
+    }
+  }
+  &__text {
+    max-width: 658px;
+    color: $c-gray-txt;
+    grid-column: 1 / -1;
+    @include desktop {
+      margin-bottom: 10px;
+    }
+    @include tablet768 {
+      margin-bottom: 5px;
+    }
+  }
+
+  & .production-navigation {
+    grid-column: -1 / 2;
+    @include desktop {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__list {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 40px;
+    @include desktop {
+      gap: 30px;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: 40px;
+        transform: translateX(50%);
+        width: 300px;
+        height: 300px;
+        z-index: -1;
+        background-image: $c-grad;
+        filter: blur(80px);
+      }
+    }
+    @include tablet768 {
+      gap: 15px;
+      grid-template-rows: auto;
+      grid-template-columns: 1fr;
+      &::after {
+        width: 150px;
+        height: 150px;
+        filter: blur(60px);
+        top: 90px;
+      }
+    }
+
+
+    & li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 30px;
+      background-color: rgba(255, 255, 255, .8);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      @include desktop {
+        padding: 50px 30px;
+      }
+      @include tablet768 {
+        padding: 20px;
+      }
+
+      &:hover {
+        @include hover {
+          background-image: $c-grad;
+          color: $c-white;
+        }
+      }
+    }
+  }
+
+  & .decor-title {
+    text-align: center;
+  }
+}

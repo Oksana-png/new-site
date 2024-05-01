@@ -1,0 +1,200 @@
+.ral {
+  &-wrapper {
+    &__header {
+      max-width: 960px;
+      margin: 0 auto;
+      gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      @include tablet768 {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        margin-bottom: 20px;
+      }
+
+      & .btn {
+        border-top-right-radius: 8px;
+        transition: all .3s ease-out;
+        flex-shrink: 0;
+
+        @include hover {
+          &:hover {
+            background-color: $c-main;
+            color: #fff;
+          }
+        }
+
+        &.active {
+          background-color: $c-main;
+          color: $c-white;
+        }
+      }
+    }
+
+    &__body {
+      background-color: rgba(255, 255, 255, .8);
+      border-radius: 16px;
+      padding: 40px 50px;
+      @include laptop {
+        padding: 30px;
+      }
+      @include tablet768 {
+        padding: 20px;
+      }
+      &-item {
+        position: relative;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        
+        & .swiper-wrapper {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          @include desktop {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          @include laptop {
+            gap: 0;
+            max-height: 704px;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+          }
+          @include tablet768 {
+            max-height: 559px;
+          }
+        }
+
+        &.active {
+          transition: max-height 2s cubic-bezier(.73, .69, 0, .85), opacity 1s ease-in-out;
+          opacity: 1;
+          max-height: 3000px;
+        }
+      }
+    }
+  }
+
+  &-item {
+    cursor: pointer;
+    &:hover .ral-color::before {
+      background-color: rgba(15, 26, 19, 0.6);
+      background-image: url(../img/svg/zoom-in.png);
+      background-size: 24px 24px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    & > .ral-color {
+      position: relative;
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+    }
+    &__info {
+      padding: 8px 12px;
+      max-width: 226px;
+      margin: 0 auto;
+      margin-top: -30px;
+      border-radius: 8px;
+      display: flex;
+      gap: 10px;
+      min-height: 60px;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 -2px 20px rgba(78, 84, 14, 0.15);
+      font-size: 14px;
+      @include tablet768 {
+        max-width: 250px;
+      }
+    }
+    &__title {
+      width: 70px;
+      flex-shrink: 0;
+    }
+    &__text {
+      color: $c-gray-txt;
+      @include laptop {
+        text-align: center;
+      }
+    }
+  }
+
+  &-color {
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 0;
+      border-radius: 8px;
+      transition: background-color 0.3s ease-out, background-image 0.3s ease-out;
+    }
+  }
+
+  &_popAp {
+    position: fixed;
+    width: 0%;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 0;
+    -webkit-transition: height .4s ease, width .4s ease;
+    -o-transition: height .4s ease, width .4s ease;
+    transition: height .4s ease, width .4s ease;
+    z-index: 999;
+
+    & h4 {
+      text-align: center;
+      padding: 40px;
+      padding-top: 40px;
+      padding-bottom: 20px;
+      color: #fff;
+      font-size: 30px;
+      text-shadow: 0 0 3px #252525;
+    }
+    p {
+      text-align: center;
+      color: #fff;
+      font-size: 26px;
+      text-shadow: 0 0 3px #252525;
+    }
+    &.active {
+      width: 80%;
+      height: 80%;
+    }
+  }
+
+  &-subtitle {
+    color: $c-gray-txt;
+    text-align: center;
+    margin-bottom: 60px;
+    @include laptop {
+      margin-bottom: 45px;
+    }
+    @include tablet768 {
+      margin-bottom: 30px;
+    }
+  }
+  & .decor-title {
+    margin-bottom: 20px;
+    @include tablet768 {
+      margin-bottom: 15px;
+    }
+  }
+
+  & .swiper-navigation {
+    display: none;
+    @include laptop {
+      display: block;
+    }                                                                   
+  }
+}

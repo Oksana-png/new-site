@@ -1,0 +1,110 @@
+.reviews {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    top: 170px;
+    width: 300px;
+    height: 300px;
+    background-image: $c-grad;
+    filter: blur(150px);
+
+    @include laptop {
+      top: 450px;
+      width: 200px;
+      height: 200px;
+      filter: blur(90px);
+      transform: translateX(-50%);
+    }
+
+    @include tablet768 {
+      top: 95px;
+      filter: blur(60px);
+    }
+  }
+  &-swiper {
+    overflow: hidden;
+  }
+  & .swiper-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 100%;
+    max-height: 662px;
+    @include desktop {
+      max-height: 993px;
+    }
+    @include tablet768 {
+      max-height: 320px;
+    }
+  }
+
+  &__item {
+    padding: 20px;
+    background-color: rgba($color: #fff, $alpha: .6);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+  }
+
+  &-slide {
+    &__name {
+      margin-bottom: 20px;
+    }
+    &__wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    &__stars {
+      display: flex;
+      align-items: center;
+    }
+    &__date {
+      color: $c-gray-txt;
+    }
+    &__text {
+      margin-bottom: 10px;
+      max-height: 135px;
+      overflow: auto;
+    }
+    &__btn {
+      border: none;
+      padding: 0;
+      font-size: 16px;
+      background: linear-gradient(45deg, #FDCD2B 0%, #D1C902 38%, #A2B01E 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  & .title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    @include laptop {
+      margin-bottom: 30px;
+    }
+  }
+  & .decor-title {
+    position: relative;
+    margin-left: 0;
+    margin-bottom: 0;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: -120px;
+      width: 640px;
+      height: 530px;
+      background-image: url('../img/decore/decore-krug-reviews.png');
+      @include laptop {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+.footer {
+  background-color: $c-main;
+  color: $c-white;
+  &-top {
+    padding: 20px 0 52px 0;
+    @include laptop {
+      padding: 40px 0;
+    }
+    &__top {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 17px;
+      @include desktop {
+        padding: 0;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      @include small {
+        flex-direction: column;
+      }
+    }
+    &__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include desktop {
+        display: grid;
+        grid-template-columns: 1.21fr 1fr;
+        gap: 10px 24px;
+      }
+      @include tablet768 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      &-clock {
+        justify-content: flex-end;
+        @include tablet768 {
+          justify-content: flex-start;
+        }
+      }
+    }
+
+    & .yandex {
+      margin-left: 15px;
+      @include desktop {
+        margin-left: auto;
+        margin-right: 0;
+      }
+      @include tablet768 {
+        margin: 0 auto;
+      }
+    }
+    & .menu-list {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      @include desktop {
+        gap: 0;
+        order: 1;
+        width: 100%;
+      }
+      @include tablet768 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+      @include small {
+        order: 0;
+      }
+    }
+    & .whatsapp {
+      align-items: flex-start;
+    }
+    & .compani-info {
+      font-size: 16px;
+    }
+  }
+  &-bottom {
+    padding: 20px 0;
+    border-top: 1px solid $c-gray-txt;
+    background: var(--gradient, $c-grad);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include phone {
+        flex-direction: column;
+      }
+    }
+    & a:hover {
+      @include hover {
+        color: $c-white;
+      }
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  overflow: hidden;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(15, 26, 19, 0.6);
+  display: none;
+  &.active {
+    display: block;
+  }
+}

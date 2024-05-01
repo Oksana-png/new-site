@@ -1,0 +1,166 @@
+.works {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include laptop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include tablet768 {
+      grid-template-columns: 1fr;
+      max-width: 290px;
+      margin: 0 auto;
+    }
+  }
+  &__item {
+    &-text {
+      position: relative;
+      width: fit-content;
+      padding: 10px 16px;
+      margin-bottom: -30px;
+      z-index: 2;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(5px);
+        box-shadow: 1px 1px #fff;        
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 60%);
+      }
+      & strong {
+        background: $c-grad;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 24px;
+        & span {
+          background: $c-gray-txt;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: $c-gray-txt;
+          font-weight: 400;
+          font-size: 16px;
+        }
+      }
+    }
+    &-image {
+      position: relative;
+      height: 222px;
+      padding: 12px 13px 10px 13px;
+      cursor: pointer;
+      @include laptop {
+        padding: 12px 17px 9px 17px;
+      }
+      @include tablet768 {
+        padding: 12px 14px 10px 15px;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 232px;
+        height: 200px;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+        transition: background-color .3s ease-out, background-image .3s ease-out;
+        clip-path: url(#figureClip);
+        @include laptop {
+          height: 200px;
+          width: 313.7px;
+          clip-path: url(#figureClipMedia);
+        }
+        @include tablet768 {
+          height: 200px;
+          width: 260.7px;
+          clip-path: url(#figureClipPhone);
+        }
+      }
+      &:hover {
+        & img {
+          position: relative;
+        }
+        &::before {
+          background-color: rgba(15, 26, 19, 0.6);
+          background-image: url("../img/svg/zoom-in.png");
+          background-size: 24px 24px;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -1px;
+        bottom: -2px;
+        left: 0;
+        background-image: url("../img/decore/works-border-large.png");
+        @include laptop {
+          background-image: url("../img/decore/works-border-laptop.png");
+        }
+        @include tablet768 {
+          background-image: url("../img/decore/works-border-phone.png");
+        }
+      }
+      & img {
+        height: 200px;
+        width: 232px;
+        margin: 0 auto;
+        display: block;
+        clip-path: url(#figureClip);
+        @include laptop {
+          height: 200px;
+          width: 313.7px;
+          clip-path: url(#figureClipMedia);
+        }
+        @include tablet768 {
+          width: 290px;
+          height: 222px;
+          clip-path: url(#figureClipPhone);
+        }
+      }
+    }
+    &-title {
+      position: relative;
+      width: fit-content;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 15.9px;
+      font-weight: 400;
+      margin-left: auto;
+      margin-top: -30px;
+      z-index: 1;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(5px);
+        box-shadow: 1px 1px #fff;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 60%);
+      }
+    }
+  }
+}
+
+
+
